@@ -1,0 +1,10 @@
+<div *ngIf="suggestion">
+
+  <br> <br>
+  <label>rename:
+    <input [(ngModel)]="suggestion.name" placeholder="name">
+  </label>
+
+  <button (click)="save()">save</button>
+  <button (click)="goBack()">go back</button>
+</div>

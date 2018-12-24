@@ -1,0 +1,32 @@
+<div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>Suggestion</th>
+      <th>Likes</th>
+    </tr>
+    <tr [class.selected]="suggestion === selectedSuggestion"
+        *ngFor="let suggestion of suggestions" 
+        (click)="onSelect(suggestion)">
+        <a routerLink="/detail/{{ suggestion.id }}">
+          <td>{{suggestion.name}}</td>
+        </a>
+      <td>{{suggestion.likeCount}} </td>
+      <button class="delete" title="delete suggestion"
+      (click)="delete(suggestion)">x</button>
+    
+    </tr>
+  </table>
+  <!-- one way binding
+  <app-suggestion-detail [suggestion]="selectedSuggestion"></app-suggestion-detail> -->
+</div>
+
+
+<div>
+    <label>suggestion name:
+      <input #suggestionName />
+    </label>
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button (click)="add(suggestionName.value); suggestionName.value=''">
+      add
+    </button>
+  </div>
