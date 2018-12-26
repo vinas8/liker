@@ -1,3 +1,8 @@
+<div *ngFor="let note of notes">
+  <!-- {{note}} -->
+</div>
+
+
 <div style="overflow-x:auto;">
   <table>
     <tr>
@@ -7,6 +12,8 @@
     <tr [class.selected]="suggestion === selectedSuggestion"
         *ngFor="let suggestion of suggestions" 
         (click)="onSelect(suggestion)">
+        {{suggestion | json}}
+
         <a routerLink="/detail/{{ suggestion.id }}">
           <td>{{suggestion.name}}</td>
         </a>

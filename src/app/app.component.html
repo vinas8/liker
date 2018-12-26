@@ -1,4 +1,12 @@
 <h1>{{ title | uppercase }}</h1>
+
+<ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item.name}}
+    </li>
+  </ul>
+
+  
 <br><br>
 <nav>
   <a routerLink="/suggestions">Suggestions</a>
@@ -6,3 +14,4 @@
 </nav>
 <router-outlet>
 <app-message></app-message>
+

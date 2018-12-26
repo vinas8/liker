@@ -4,25 +4,39 @@ import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
+
+// interface Suggestion {
+//   id?: string;
+//   name: string;
+//   likeCount: number
+// }
 
 @Injectable({
   providedIn: 'root'
 })
 export class SuggestionService {
-  private suggestionsUrl = 'api/suggestions';
 
+  // private notesCollection: AngularFirestoreCollection<Suggestion>
+  // notes: Observable<Suggestion[]>;
+
+  private suggestionsUrl = 'api/suggestions';
+  
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    private db: AngularFirestore) { }
 
-  getSuggestions(): Observable<Suggestion[]> {
+  getSuggestions(): any {
+    let value = this.db.collection('suggestions', ref => {
+      return ref.orderBy('likeCount', 'desc')
+    })
+
+    let snapshot = value.snapshotChanges();
     // this.messageService.add('SuggestionService: fetched suggestions')
     //Applying the optional type specifier, <Hero[]> , gives you a typed result object.
-    return this.http.get<Suggestion[]>(this.suggestionsUrl)
-      .pipe(
-        tap(_ => this.log('fetched suggestions')),
-        catchError(this.handleError('getSubscribers', []))
-      )
+    console.log(snapshot)
+    return value.valueChanges();
   }
 
     /** GET hero by id. Will 404 if id not found */

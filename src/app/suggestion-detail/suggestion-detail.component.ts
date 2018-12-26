@@ -22,16 +22,11 @@ export class SuggestionDetailComponent implements OnInit {
 
   getSuggestion(): void {
     //Route parameters are always strings. The JavaScript (+) operator converts the string to a number
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.suggestionService.getSuggestion(id).subscribe(suggestion => this.suggestion = suggestion)
+    // const id = +this.route.snapshot.paramMap.get('id');
+    // this.suggestionService.getSuggestion(id).subscribe(suggestion => this.suggestion = suggestion)
   }
 
   goBack(): void {
     this.location.back();
-  }
-
-  save(): void {
-    this.suggestionService.updateSuggestion(this.suggestion)
-      .subscribe(() => this.goBack());
   }
 }

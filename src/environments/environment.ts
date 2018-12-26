@@ -11,8 +11,14 @@ export const environment = {
     projectId: "like-master",
     storageBucket: "like-master.appspot.com",
     messagingSenderId: "1018633449255"
+  },
+  actionCodeSettings: {
+    // Your redirect URL
+    url: 'https://localhost:4200/login', 
+    handleCodeInApp: true,
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -15,6 +15,18 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { SuggestionSearchComponent } from './suggestion-search/suggestion-search.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { UserLoginComponent } from './users/user-login/user-login.component';
+import { UserProfileComponent } from './users/user-profile/user-profile.component';
+import { CoreModule } from './core/core.module';
+import { PasswordlessAuthComponent } from './passwordless-auth/passwordless-auth.component';
+import { AuthGuard } from './core/auth.guard'
+import { AuthService } from './core/auth.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +35,9 @@ import { SuggestionSearchComponent } from './suggestion-search/suggestion-search
     MessageComponent,
     DashboardComponent,
     SuggestionSearchComponent,
+    UserLoginComponent,
+    UserProfileComponent,
+    PasswordlessAuthComponent,
   ],
   imports: [
     HttpClientModule,
@@ -30,10 +45,14 @@ import { SuggestionSearchComponent } from './suggestion-search/suggestion-search
       InMemoryDataService, { dataEncapsulation: false }
     ),
     BrowserModule,
+    AngularFireModule.initializeApp(environment.firebase, 'like-master'),
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireAuthModule, 
+    AngularFirestoreModule.enablePersistence(),
+    CoreModule
   ],
-  providers: [],
+  providers: [ AuthService, AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
