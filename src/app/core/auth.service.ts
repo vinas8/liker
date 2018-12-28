@@ -35,24 +35,11 @@ export class AuthService {
           return of(null);
         }
       })
-      // tap(user => localStorage.setItem('user', JSON.stringify(user))),
-      // startWith(JSON.parse(localStorage.getItem('user')))
     );
   }
 
   get currentUserObservable(): any {
     return this.afAuth
-  }
-  
-  emailSignUp(email: string, password: string) {
-    return this.afAuth.auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(credential => {
-        this.notify.update('Welcome new userrrr!', 'success');
-        console.log(credential.user)
-        return this.updateUserData(credential.user); // if using firestore
-      })
-      .catch(error => this.handleError(error));
   }
 
   signOut() {
