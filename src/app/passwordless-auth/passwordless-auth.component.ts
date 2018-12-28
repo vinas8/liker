@@ -12,7 +12,7 @@ interface User {
 }
 
 @Component({
-  selector: 'passwordless-auth',
+  selector: 'app-passwordless-auth',
   templateUrl: './passwordless-auth.component.html',
   styleUrls: ['./passwordless-auth.component.scss']
 })
@@ -22,11 +22,10 @@ export class PasswordlessAuthComponent implements OnInit {
   userData: User;
   email: string;
   emailSent = false;
-  
 
   errorMessage: string;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router,     private afs: AngularFirestore) {}
+  constructor(public afAuth: AngularFireAuth, private router: Router, private afs: AngularFirestore) {}
 
   ngOnInit() {
     this.user = this.afAuth.authState;
@@ -64,14 +63,13 @@ export class PasswordlessAuthComponent implements OnInit {
         // Signin user and remove the email localStorage
         const result = await this.afAuth.auth.signInWithEmailLink(email, url)
           .then((credential) => {
-            console.log(credential)
-            this.updateUserData(credential.user)
-            window.localStorage.setItem('uid', credential.user.uid)
-          })
+            this.updateUserData(credential.user);
+            window.localStorage.setItem('uid', credential.user.uid);
+          });
 
         // this.updateUserData(result)
         window.localStorage.removeItem('emailForSignIn');
-        this.router.navigate(['/suggestions'])
+        this.router.navigate(['/suggestions']);
       }
     } catch (err) {
       this.errorMessage = err.message;
@@ -79,7 +77,6 @@ export class PasswordlessAuthComponent implements OnInit {
   }
 
   private updateUserData(user) {
-    console.log('updating')
     // Sets user data to firestore on login
 
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
@@ -87,11 +84,9 @@ export class PasswordlessAuthComponent implements OnInit {
     const data: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL
-    }
+    };
 
-    return userRef.set(data, { merge: true })
+    return userRef.set(data, { merge: true });
 
   }
 

@@ -39,7 +39,7 @@ export class AuthService {
   }
 
   get currentUserObservable(): any {
-    return this.afAuth
+    return this.afAuth;
   }
 
   signOut() {

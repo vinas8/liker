@@ -5,16 +5,16 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDtCminc6v_UsicIkbwmvFNKTMas6PSJTE",
-    authDomain: "like-master.firebaseapp.com",
-    databaseURL: "https://like-master.firebaseio.com",
-    projectId: "like-master",
-    storageBucket: "like-master.appspot.com",
-    messagingSenderId: "1018633449255"
+    apiKey: 'AIzaSyDtCminc6v_UsicIkbwmvFNKTMas6PSJTE',
+    authDomain: 'like-master.firebaseapp.com',
+    databaseURL: 'https://like-master.firebaseio.com',
+    projectId: 'like-master',
+    storageBucket: 'like-master.appspot.com',
+    messagingSenderId: '1018633449255'
   },
   actionCodeSettings: {
     // Your redirect URL
-    url: 'http://localhost:4205/login', 
+    url: 'http://localhost:4205/login',
     handleCodeInApp: true,
   }
 };

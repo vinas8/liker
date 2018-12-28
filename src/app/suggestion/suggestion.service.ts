@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Suggestion } from './Suggestion'
+import { Suggestion } from './Suggestion';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -21,36 +21,36 @@ export class SuggestionService {
     if (!suggestion.liked) {
       this.db.collection('suggestions').doc(suggestion.id.id).update({
         likes: firebase.firestore.FieldValue.arrayUnion(window.localStorage.getItem('uid'))
-      })
+      });
     } else {
       this.db.collection('suggestions').doc(suggestion.id.id).update({
         likes: firebase.firestore.FieldValue.arrayRemove(window.localStorage.getItem('uid'))
-      })
+      });
     }
   }
 
   getSuggestions(): any {
-    let suggestions = this.db.collection('suggestions')
+    const suggestions = this.db.collection('suggestions');
 
-    let snapshot = suggestions.snapshotChanges().pipe(map(actions => {
+    const snapshot = suggestions.snapshotChanges().pipe(map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as Suggestion;
         const id = a.payload.doc;
         let liked = false;
-        const likes = data.likes
+        const likes = data.likes;
 
-        if (typeof likes !== "undefined" && likes.includes(window.localStorage.getItem('uid'))) {
+        if (typeof likes !== 'undefined' && likes.includes(window.localStorage.getItem('uid'))) {
           liked = true;
         }
-       
+
         return { id, ...data, liked };
-      })
+      });
     }));
     return snapshot;
   }
 
   addSuggestion(suggestion: Suggestion): void {
-    this.db.collection('suggestions').add(suggestion)
+    this.db.collection('suggestions').add(suggestion);
   }
 
   /**

@@ -11,7 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { PasswordlessAuthComponent } from './passwordless-auth/passwordless-auth.component';
-import { AuthGuard } from './core/auth.guard'
+import { AuthGuard } from './core/auth.guard';
 import { AuthService } from './core/auth.service';
 import { CoreModule } from './core/core.module';
 
@@ -34,7 +34,7 @@ import { rootRouterConfig } from './app.routes';
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'like-master'),
     FormsModule,
-    AngularFireAuthModule, 
+    AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
     CoreModule,
     RouterModule.forRoot(rootRouterConfig, { useHash: false }),

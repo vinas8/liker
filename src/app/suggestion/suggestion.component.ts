@@ -26,14 +26,14 @@ export class SuggestionComponent implements OnInit {
   add(name: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.suggestionService.addSuggestion({ name } as Suggestion)
+    this.suggestionService.addSuggestion({ name } as Suggestion);
       // .subscribe(suggestion => {
       //   this.suggestions.push(suggestion);
       // });
   }
 
   like(suggestion): void {
-    this.suggestionService.vote(suggestion)
+    this.suggestionService.vote(suggestion);
   }
 
 }
