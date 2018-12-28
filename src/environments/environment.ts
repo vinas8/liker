@@ -14,7 +14,7 @@ export const environment = {
   },
   actionCodeSettings: {
     // Your redirect URL
-    url: 'https://localhost:4200/login', 
+    url: 'http://localhost:4205/login', 
     handleCodeInApp: true,
   }
 };

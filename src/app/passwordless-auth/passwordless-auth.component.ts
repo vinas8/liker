@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { environment } from '../../environments/environment';
 
 interface User {
   uid: string;
@@ -38,16 +39,10 @@ export class PasswordlessAuthComponent implements OnInit {
   }
 
   async sendEmailLink() {
-    const actionCodeSettings = {
-      // Your redirect URL
-      url: 'http://localhost:4200/login',
-      handleCodeInApp: true
-    };
-
     try {
       await this.afAuth.auth.sendSignInLinkToEmail(
         this.email,
-        actionCodeSettings
+        environment.actionCodeSettings
       );
       window.localStorage.setItem('emailForSignIn', this.email);
       this.emailSent = true;
