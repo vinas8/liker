@@ -71,10 +71,12 @@ export class PasswordlessAuthComponent implements OnInit {
           .then((credential) => {
             console.log(credential)
             this.updateUserData(credential.user)
+            window.localStorage.setItem('uid', credential.user.uid)
           })
 
         // this.updateUserData(result)
         window.localStorage.removeItem('emailForSignIn');
+        this.router.navigate(['/suggestions'])
       }
     } catch (err) {
       this.errorMessage = err.message;

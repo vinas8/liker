@@ -17,6 +17,18 @@ tr:nth-child(even){background-color: #f2f2f2}
   color: white;
 }
 
+div.liked {
+  display: inline-block;
+  background-image: url(/assets/images/like.svg);
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  margin-left: 10px;
+  width: 15px;
+  height: 15px;
+}
+img.liked {
+  /* display: none; */
+}
 
 
 /* HeroesComponent's private CSS styles 

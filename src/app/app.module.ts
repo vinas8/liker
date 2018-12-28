@@ -25,7 +25,10 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import { CoreModule } from './core/core.module';
 import { PasswordlessAuthComponent } from './passwordless-auth/passwordless-auth.component';
 import { AuthGuard } from './core/auth.guard'
-import { AuthService } from './core/auth.service'
+import { AuthService } from './core/auth.service';
+import { ItemsListComponent } from './items/items-list/items-list.component';
+import { ItemDetailComponent } from './items/item-detail/item-detail.component';
+import { ItemFormComponent } from './items/item-form/item-form.component'
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { AuthService } from './core/auth.service'
     UserLoginComponent,
     UserProfileComponent,
     PasswordlessAuthComponent,
+    ItemsListComponent,
+    ItemDetailComponent,
+    ItemFormComponent,
   ],
   imports: [
     HttpClientModule,

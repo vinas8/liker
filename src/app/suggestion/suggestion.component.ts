@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Suggestion } from '../Suggestion';
 import { SuggestionService } from '../suggestion.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { VoteService } from '../vote.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-suggestion',
@@ -9,17 +12,13 @@ import { SuggestionService } from '../suggestion.service';
 })
 export class SuggestionComponent implements OnInit {
   suggestions: Suggestion[];
-  // selectedSuggestion: Suggestion;
 
-  constructor(private suggestionService: SuggestionService) { }
+  constructor(private suggestionService: SuggestionService, public afAuth: AngularFireAuth,
+    private voteService: VoteService) { }
 
   ngOnInit() {
     this.getSuggestions();
   }
-
-  // onSelect(suggestion: Suggestion): void {
-  //   this.selectedSuggestion = suggestion;
-  // }
 
   getSuggestions(): void {
     this.suggestionService.getSuggestions()
@@ -30,13 +29,18 @@ export class SuggestionComponent implements OnInit {
     name = name.trim();
     if (!name) { return; }
     this.suggestionService.addSuggestion({ name } as Suggestion)
-      .subscribe(suggestion => {
-        this.suggestions.push(suggestion);
-      });
+      // .subscribe(suggestion => {
+      //   this.suggestions.push(suggestion);
+      // });
   }
 
   delete(suggestion: Suggestion): void {
     this.suggestions = this.suggestions.filter(h => h !== suggestion);
     this.suggestionService.deleteSuggestion(suggestion).subscribe();
   }
+
+  like(suggestion): void {
+    this.suggestionService.vote(suggestion)
+  }
+
 }
