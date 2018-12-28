@@ -13,7 +13,7 @@ interface User {
 @Component({
   selector: 'passwordless-auth',
   templateUrl: './passwordless-auth.component.html',
-  styleUrls: ['./passwordless-auth.component.css']
+  styleUrls: ['./passwordless-auth.component.scss']
 })
 
 export class PasswordlessAuthComponent implements OnInit {
