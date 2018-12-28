@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-suggestion',
   templateUrl: './suggestion.component.html',
-  styleUrls: ['./suggestion.component.css']
+  styleUrls: ['./suggestion.component.scss']
 })
 export class SuggestionComponent implements OnInit {
   suggestions: Suggestion[];

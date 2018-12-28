@@ -1,0 +1,99 @@
+$table_even_like_default: #E7E7E7;
+$table_odd: #f0f0f0;
+$table_header: #6F7084;
+
+$like_hover: #CBD9F3;
+$like_active: #A8B7D6;
+
+$add_hover: #7796CE;
+$add_default: #5C7EBD;
+$add_active: #5974A9;
+
+
+.container {
+  width: 30%;
+
+  @media (min-width: 480px) and (max-width: 1024px) {
+    width: 50%;
+  }
+
+  @media (min-width: 320px) and (max-width: 480px) {
+    width: 100%;
+  }
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+    border: 5px solid #fff;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: white;
+
+    background-color: $table_header;
+  }
+  
+  td {
+    &.like:hover {
+      background-color: $like_hover;
+    }
+    &.like:active {
+      background-color: $like_active;
+    }
+  }
+
+  tr:nth-child(even){
+    background-color: $table_even_like_default;
+  }
+
+  tr:nth-child(odd){
+    background-color: $table_odd;
+  }
+
+  div.liked {
+    display: inline-block;
+    background-image: url(/assets/images/like.svg);
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    margin-left: 10px;
+    width: 15px;
+    height: 15px;
+  }
+}
+
+div.addSuggestion {
+  margin-top: 10px;
+
+  input {
+    padding: 10px 15px;
+    box-sizing: border-box;
+    width: 74%;
+  }
+
+  button {
+    padding: 11px 15px;
+    width: 24%;
+    background-color: $add_default;
+    color: white;
+    margin-left: 5px;
+
+    &:hover {
+      background-color: $add_hover;
+    }
+
+    &:active {
+      background-color: $add_active;
+    }
+  }
+}
+
+
