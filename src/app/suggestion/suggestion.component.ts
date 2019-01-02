@@ -19,8 +19,7 @@ export class SuggestionComponent implements OnInit {
   }
 
   getSuggestions(): void {
-    this.suggestionService.getSuggestions()
-      .subscribe(suggestions => this.suggestions = suggestions);
+    this.suggestions = this.suggestionService.getSuggestions()
   }
 
   add(name: string): void {

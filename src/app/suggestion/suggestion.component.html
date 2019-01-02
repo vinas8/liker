@@ -5,7 +5,7 @@
           <th>Suggestion</th>
           <th>Likes</th>
         </tr>
-        <tr *ngFor="let suggestion of suggestions ">
+        <tr *ngFor="let suggestion of suggestions | async ">
           <td>
             <span>{{ suggestion.name }}</span>
           </td>
