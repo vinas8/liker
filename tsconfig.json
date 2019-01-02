@@ -17,9 +17,5 @@
       "es2017",
       "dom"
     ]
-  },
-  "jest": {
-    "preset": "jest-preset-angular",
-    "setupTestFrameworkScriptFile": "<rootDir>/src/setupJest.ts"
   }
 }
