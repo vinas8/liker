@@ -7,12 +7,12 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import * as firebase from 'firebase';
 
 
+export const suggestionsUrl = 'api/suggestions'; // URL to web api
+
 @Injectable({
   providedIn: 'root'
 })
 export class SuggestionService {
-  private suggestionsUrl = 'api/suggestions';
-
   constructor(
     private http: HttpClient,
     private db: AngularFirestore) { }
@@ -42,7 +42,7 @@ export class SuggestionService {
         if (typeof likes !== 'undefined' && likes.includes(window.localStorage.getItem('uid'))) {
           liked = true;
         }
-
+        
         return { id, ...data, liked };
       });
     }));
