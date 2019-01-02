@@ -1,5 +1,11 @@
 # LikeMaster
 
+1. clone, cd
+2. yarn install
+3. ng serve
+4. enter email https://emailfake.com/
+5. go to mail and click the link to authenticate.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.8.
 
 ## Development server
